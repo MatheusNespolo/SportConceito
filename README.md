@@ -10,10 +10,10 @@ npm test         # testes (vitest)
 npm run build    # gera a pasta dist/
 ```
 
-Configuração em `src/config.js` (WhatsApp, Instagram, endereço, horário). A URL da planilha vem de `VITE_CSV_URL` (arquivo `.env`); sem ela, usa `public/sample.csv`.
+Configuração em `src/config.js` (WhatsApp, Instagram, horário). A loja é só virtual, sem endereço físico. A URL da planilha vem de `VITE_CSV_URL` (arquivo `.env`); sem ela, usa a planilha publicada definida em `src/config.js`.
 
 ## Antes de publicar
-- [ ] Trocar o número de WhatsApp, endereço e horário em `src/config.js`.
+- [ ] Conferir o número de WhatsApp e o horário de atendimento em `src/config.js`.
 - [ ] Definir `VITE_CSV_URL` (link CSV da planilha publicada).
 - [ ] Rodar o Lighthouse (mobile) no Chrome DevTools e buscar >= 90 em Performance e Acessibilidade.
 

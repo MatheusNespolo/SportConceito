@@ -32,7 +32,6 @@ function render() {
 function fillStoreInfo() {
   document.querySelectorAll('[data-ig]').forEach(a => { a.href = igUrl; });
   document.getElementById('wa-float').href = `https://wa.me/${config.whatsapp.replace(/\D/g, '')}`;
-  document.getElementById('store-address').textContent = config.address;
   document.getElementById('store-hours').textContent = config.hours;
 }
 
