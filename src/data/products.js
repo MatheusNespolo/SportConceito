@@ -29,6 +29,7 @@ export async function loadProducts({ url, fetchFn = fetch, storage = globalThis.
     if (!res.ok) throw new Error('HTTP');
     const rows = parseCSV(await res.text());
     if (!rows.length) throw new Error('CSV vazio');
+    if (!('nome' in rows[0]) || !('disponivel' in rows[0])) throw new Error('CSV sem colunas esperadas');
     const products = rows.map(normalizeRow).filter(Boolean);
     safe(() => storage.setItem(CACHE_KEY, JSON.stringify(products)));
     return { products, source: 'network' };

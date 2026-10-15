@@ -49,3 +49,21 @@ describe('loadProducts', () => {
     expect(r.source).toBe('none');
   });
 });
+
+describe('loadProducts header validation', () => {
+  it('treats a 200 response without expected columns as failure and keeps cache', async () => {
+    const storage = memStorage();
+    const cachedJson = JSON.stringify([{ id: '9' }]);
+    storage.setItem('sc:products:v1', cachedJson);
+    const html = '<!doctype html>\n<html>\n<body>\n<p>Sign in</p>\n<p>Continue</p>\n</body>\n</html>';
+    const r = await loadProducts({ url: 'u', fetchFn: vi.fn().mockResolvedValue({ ok: true, text: () => Promise.resolve(html) }), storage });
+    expect(r).toEqual({ products: [{ id: '9' }], source: 'cache' });
+    expect(storage.getItem('sc:products:v1')).toBe(cachedJson);
+  });
+  it('treats a valid sheet with all rows unavailable as empty network result', async () => {
+    const storage = memStorage();
+    const allFalse = 'id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel\n1,Boné,bonés,59,,https://a/b.jpg,,,FALSE';
+    const r = await loadProducts({ url: 'u', fetchFn: vi.fn().mockResolvedValue({ ok: true, text: () => Promise.resolve(allFalse) }), storage });
+    expect(r).toEqual({ products: [], source: 'network' });
+  });
+});
