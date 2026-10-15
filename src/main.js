@@ -1,11 +1,10 @@
-import './styles/tokens.css'; import './styles/base.css'; import './styles/effects.css'; import './styles/components.css';
+import './styles/tokens.css'; import './styles/base.css'; import './styles/components.css';
 import { config } from './config.js';
 import { loadProducts } from './data/products.js';
 import { filterByCategory } from './domain/filter.js';
 import { renderGrid } from './ui/grid.js';
 import { renderFilters } from './ui/filters.js';
 import { openProductSheet } from './ui/product-sheet.js';
-import { initSpotlight } from './ui/spotlight.js';
 
 const grid = document.getElementById('grid');
 const filters = document.getElementById('filters');
@@ -18,7 +17,7 @@ function showSkeleton() {
 }
 function showOffline() {
   const p = document.createElement('p'); p.className = 'empty';
-  const a = document.createElement('a'); a.href = igUrl; a.textContent = 'Veja nosso catálogo no Instagram'; a.className = 'glow-btn';
+  const a = document.createElement('a'); a.href = igUrl; a.textContent = 'Veja nosso catálogo no Instagram';
   p.append('Não foi possível carregar os produtos agora. ', a); grid.replaceChildren(p);
 }
 function render() {
@@ -36,7 +35,7 @@ function fillStoreInfo() {
   document.getElementById('store-hours').textContent = config.hours;
 }
 
-fillStoreInfo(); initSpotlight(document.body); showSkeleton();
+fillStoreInfo(); showSkeleton();
 const { products: list, source } = await loadProducts({ url: config.csvUrl });
 products = list;
 if (source === 'none') showOffline(); else render();

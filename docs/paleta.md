@@ -1,24 +1,34 @@
 # Paleta e tipografia - Sport Conceito
 
-Origem: logo do Instagram @sportconceito_ (perfil atras de login; logo visivel): fundo preto, letras "SPORT CONCEITO" cromadas/prata com coroa, brilho neon azul eletrico. Hex definidos pelo controller.
+**Atualizado em 2026-10-15.** Mudamos da paleta escura "neon" (preto + azul eletrico + prata, fonte Anton) para a paleta "A - Areia e azul": visual mais suave e amigavel, estilo cartoon leve. O azul continua vindo do logo, so que suavizado.
 
 | Token | Hex | Uso |
 |---|---|---|
-| --bg | #07080b | fundo |
-| --surface | #11141a | cards |
-| --text | #f2f4f7 | texto |
-| --muted | #9aa3b2 | texto secundario |
-| --line | #232833 | bordas |
-| --silver | #c9ced6 | destaques cromados |
-| --accent | #2b8cff (rgb 43 140 255) | acento/brilho |
-| --on-accent | #07080b | texto sobre botoes de acento |
+| --sand (--bg) | #F6EFE3 | fundo da pagina |
+| --paper (--surface) | #FFFDF7 | cards, cabecalho, folha de produto |
+| --sky | #DCEBFA | fundo suave (area da imagem, hero) |
+| --ink (--text, --line, --silver) | #1E2A3A | texto, contornos e sombras chapadas |
+| --ink-soft (--muted) | #4A5568 | texto secundario |
+| --accent | #7DB8F0 (rgb 125 184 240) | botoes, chip ativo, ondas |
+| --on-accent | #1E2A3A | texto sobre o azul de acento |
+| --accent-2 | #FFD27A | etiqueta "Destaque", botao fechar |
 
 ## Contraste WCAG (calculado)
-- text/bg 18.18:1 AA ok; muted/bg 7.87:1 ok; muted/surface 7.25:1 ok; silver/bg 12.67:1 ok
-- accent/bg 6.01:1 ok (texto/links azuis)
-- #f2f4f7 sobre #2b8cff = 3.03:1 FALHA AA (texto normal) -> botoes de acento usam --on-accent #07080b: 6.01:1 ok.
+| Par | Razao | Resultado |
+|---|---|---|
+| ink sobre sand | 12.69:1 | AA/AAA ok |
+| ink sobre paper | 14.26:1 | AA/AAA ok |
+| ink-soft sobre paper | 7.40:1 | AA/AAA ok |
+| ink-soft sobre sand | 6.58:1 | AA ok |
+| ink sobre accent azul | 6.90:1 | AA ok |
+| ink sobre amarelo | 10.19:1 | AA/AAA ok |
+| ink sobre sky | 11.96:1 | AA/AAA ok |
+| ink-soft sobre sky | 6.20:1 | AA ok |
 
-## Fontes (ui-ux-pro-max, par "Gen Z Brutal", streetwear)
-- --font-display: Anton; --font-body: Epilogue
-- Task 5 deve usar no <head>:
-  `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;600;700&display=swap">`
+## Elementos cartoon
+Contornos de 2 a 2,5px em ink com cantos arredondados levemente irregulares; sombras chapadas deslocadas (`4px 4px 0 ink`) no lugar de brilho; hover so em `@media (hover:hover)`; transicoes de 150ms desligadas com `prefers-reduced-motion`; ondas azuis (CSS) entre hero e catalogo e acima do rodape; etiqueta amarela inclinada -6deg nos produtos em destaque.
+
+## Fontes (ui-ux-pro-max, par "Playful Creative")
+- --font-display: **Fredoka** (500/600/700) - arredondada e amigavel, para titulos, precos e botoes
+- --font-body: **Nunito** (400/600/700/800) - sans arredondada, boa leitura
+- `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">`
