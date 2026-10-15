@@ -6,7 +6,7 @@ O catálogo do site é lido de uma planilha do Google. Mudou a planilha, mudou o
 No Google Planilhas, crie uma planilha nova e escreva **exatamente** este cabeçalho na linha 1 (uma coluna por item, sem espaços extras):
 
 ```
-id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel
+id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel,destaque
 ```
 
 | Coluna | O que colocar |
@@ -20,6 +20,7 @@ id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel
 | foto2_url | Link da segunda foto (opcional) |
 | link_instagram | Link do post no Instagram (opcional) |
 | disponivel | Marcado = à venda; desmarcado = esgotado |
+| destaque | Opcional. Marque para mostrar a etiqueta Destaque e colocar o produto no topo. Mesmos valores de `disponivel` (TRUE, `sim`, `s`, `1`, `x`). Em branco ou coluna ausente = sem destaque |
 
 ### Evitar erros de digitação
 - **categoria:** selecione a coluna, menu *Dados > Validação de dados > Adicionar regra > Menu suspenso* e informe: camisetas, bermudas, bonés, tênis.
@@ -54,8 +55,8 @@ VITE_CSV_URL=https://docs.google.com/spreadsheets/d/e/....../pub?output=csv
 ## 5. Exemplos do dia a dia
 **Cadastrar um produto:** vá na primeira linha vazia e preencha uma célula por coluna, por exemplo:
 
-| id | nome | categoria | preco | tamanhos | foto_url | foto2_url | link_instagram | disponivel |
-|---|---|---|---|---|---|---|---|---|
-| cam-014 | Camiseta Dry Fit Preta | camisetas | 89,90 | P, M, G | (link da foto) | | (link do post) | marcado |
+| id | nome | categoria | preco | tamanhos | foto_url | foto2_url | link_instagram | disponivel | destaque |
+|---|---|---|---|---|---|---|---|---|---|
+| cam-014 | Camiseta Dry Fit Preta | camisetas | 89,90 | P, M, G | (link da foto) | | (link do post) | marcado | |
 
 **Esgotar um produto:** ache a linha dele e desmarque a caixa da coluna `disponivel`. Ele continua aparecendo, marcado como indisponível. Para voltar a vender, marque de novo.

@@ -7,7 +7,7 @@ const row = (o = {}) => ({ id: '1', nome: 'Tênis X', categoria: '  Tênis ', pr
 describe('normalizeRow', () => {
   it('normalizes a valid row', () => {
     expect(normalizeRow(row())).toEqual({ id: '1', nome: 'Tênis X', categoria: 'tênis', preco: 299.9,
-      tamanhos: ['38', '39', '40'], fotos: ['https://a/1.jpg'], linkInstagram: 'https://instagram.com/p/x' });
+      tamanhos: ['38', '39', '40'], fotos: ['https://a/1.jpg'], linkInstagram: 'https://instagram.com/p/x', featured: false });
   });
   it('maps unaccented categories', () => expect(normalizeRow(row({ categoria: 'BONES' })).categoria).toBe('bonés'));
   it.each(['FALSE', 'não', '', 'nao'])('rejects disponivel=%s', v => expect(normalizeRow(row({ disponivel: v }))).toBeNull());
@@ -80,5 +80,25 @@ describe('optional price', () => {
   it('accepts empty preco as null', () => {
     expect(normalizeRow(row({ preco: '' })).preco).toBeNull();
     expect(normalizeRow(row({ preco: '   ' })).preco).toBeNull();
+  });
+});
+
+describe('featured (destaque)', () => {
+  it.each(['TRUE', 'sim', ' S ', '1', 'x', 'X'])('destaque=%s → featured true', v => expect(normalizeRow(row({ destaque: v })).featured).toBe(true));
+  it.each(['FALSE', 'não', '', undefined])('destaque=%s → featured false', v => expect(normalizeRow(row({ destaque: v })).featured).toBe(false));
+  it('missing destaque column → featured false', () => expect(normalizeRow(row()).featured).toBe(false));
+});
+
+describe('loadProducts featured ordering', () => {
+  const head = 'id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel,destaque\n';
+  const body = ['1,A,bonés,59,,https://a/1.jpg,,,TRUE,', '2,B,bonés,59,,https://a/2.jpg,,,TRUE,sim', '3,C,bonés,59,,https://a/3.jpg,,,TRUE,',
+    '4,D,bonés,59,,https://a/4.jpg,,,TRUE,x'].join('\n');
+  const load = text => loadProducts({ url: 'u', fetchFn: vi.fn().mockResolvedValue({ ok: true, text: () => Promise.resolve(text) }), storage: memStorage() });
+  it('puts featured first, stable otherwise', async () => {
+    expect((await load(head + body)).products.map(p => p.id)).toEqual(['2', '4', '1', '3']);
+  });
+  it('sheets without destaque column still work, order preserved', async () => {
+    const r = await load(csv);
+    expect(r.source).toBe('network'); expect(r.products.map(p => p.id)).toEqual(['1']);
   });
 });

@@ -1,9 +1,9 @@
-id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel
-1,Camiseta Dry Fit Preta,camisetas,89,"P, M, G, GG",https://picsum.photos/seed/sc1/600/750,https://picsum.photos/seed/sc2/600/750,https://instagram.com/p/sc1,TRUE
-2,Camiseta Básica Branca,camisetas,69.90,"P, M, G",https://picsum.photos/seed/sc2/600/750,,https://instagram.com/p/sc2,TRUE
-3,Bermuda Treino Cinza,bermudas,119,"P, M, G",https://picsum.photos/seed/sc3/600/750,https://picsum.photos/seed/sc4/600/750,https://instagram.com/p/sc3,TRUE
-4,Bermuda Corrida Azul,bermudas,99,"M, G",https://picsum.photos/seed/sc4/600/750,,https://instagram.com/p/sc4,FALSE
-5,Boné Aba Curva Preto,bonés,59,"",https://picsum.photos/seed/sc5/600/750,,https://instagram.com/p/sc5,TRUE
-6,Boné Trucker Verde,bonés,79,"Único",https://picsum.photos/seed/sc6/600/750,https://picsum.photos/seed/sc7/600/750,https://instagram.com/p/sc6,TRUE
-7,Tênis Runner Pro,tênis,299.90,"38, 39, 40, 41",https://picsum.photos/seed/sc7/600/750,,https://instagram.com/p/sc7,TRUE
-8,Tênis Training Lite,tênis,249.90,"39, 40, 42",https://picsum.photos/seed/sc8/600/750,https://picsum.photos/seed/sc1/600/750,https://instagram.com/p/sc8,TRUE
+id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel,destaque
+1,Camiseta Dry Fit Preta,camisetas,89,"P, M, G, GG",https://picsum.photos/seed/sc1/600/750,https://picsum.photos/seed/sc2/600/750,https://instagram.com/p/sc1,TRUE,TRUE
+2,Camiseta Básica Branca,camisetas,69.90,"P, M, G",https://picsum.photos/seed/sc2/600/750,,https://instagram.com/p/sc2,TRUE,
+3,Bermuda Treino Cinza,bermudas,119,"P, M, G",https://picsum.photos/seed/sc3/600/750,https://picsum.photos/seed/sc4/600/750,https://instagram.com/p/sc3,TRUE,
+4,Bermuda Corrida Azul,bermudas,99,"M, G",https://picsum.photos/seed/sc4/600/750,,https://instagram.com/p/sc4,FALSE,
+5,Boné Aba Curva Preto,bonés,59,"",https://picsum.photos/seed/sc5/600/750,,https://instagram.com/p/sc5,TRUE,
+6,Boné Trucker Verde,bonés,79,"Único",https://picsum.photos/seed/sc6/600/750,https://picsum.photos/seed/sc7/600/750,https://instagram.com/p/sc6,TRUE,
+7,Tênis Runner Pro,tênis,299.90,"38, 39, 40, 41",https://picsum.photos/seed/sc7/600/750,,https://instagram.com/p/sc7,TRUE,TRUE
+8,Tênis Training Lite,tênis,249.90,"39, 40, 42",https://picsum.photos/seed/sc8/600/750,https://picsum.photos/seed/sc1/600/750,https://instagram.com/p/sc8,TRUE,
