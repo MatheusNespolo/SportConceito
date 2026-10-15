@@ -8,7 +8,7 @@
 .hero h1{font-family:var(--font-display);font-weight:400;text-transform:uppercase;font-size:clamp(3rem,12vw,7rem);line-height:.95;margin:0 0 16px;color:var(--silver)}
 .hero p{color:var(--muted);margin:0 0 28px}
 .btn{display:inline-block;padding:14px 28px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:700;text-decoration:none}
-.catalog{max-width:1200px;margin:0 auto;padding:32px 16px 96px}
+.catalog{max-width:1200px;margin:0 auto;padding:32px 16px 96px;scroll-margin-top:80px}
 .filters{display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:20px}
 .chip{flex:none;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;font-weight:600;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .chip:hover{border-color:var(--accent)}
