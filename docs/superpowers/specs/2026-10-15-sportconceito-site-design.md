@@ -62,5 +62,16 @@ Colunas: `id | nome | categoria | preco | tamanhos | foto_url | foto2_url | link
 - Vitest: csv.js, normalização em products.js (incluindo indisponível/linha inválida), filter.js, whatsapp.js (encoding da mensagem).
 - Verificação manual no navegador: 375px e desktop; teclado e foco no bottom sheet; contraste AA; alt text.
 
-## 8. Fora de escopo
+## 8. Efeitos de luz e sombra
+Reproduzir os efeitos de matheusnespolo.github.io/dataflow-inventory-site, trocando o violeta `#8b3dff` pela cor de acento `--accent` da paleta do Instagram:
+- **Cursor spotlight** nos cards: `radial-gradient(420px circle at var(--mx) var(--my), accent/0.22, transparent 65%)`, posição via `pointermove`.
+- **Glow de botão primário**: `box-shadow: 0 0 0 1px accent/0.6, 0 18px 60px -12px accent/0.75`.
+- **Text glow** no título do hero: `filter: drop-shadow(0 0 28px accent/0.55) drop-shadow(0 0 80px accent/0.3)`.
+- **Blob de luz** atrás do hero: elemento com `blur(140px)`.
+- **Grid de fundo** (64px, accent/0.09) com `mask-image` radial.
+- **Grain**: ruído SVG `feTurbulence` em overlay fixo, opacidade 0.075, animado.
+- **Hover glow** em ícones: `0 0 16px 4px accent/0.6`.
+- Tudo desligado/estático com `prefers-reduced-motion: reduce`; spotlight só em dispositivos com hover.
+
+## 9. Fora de escopo
 Pagamentos, login/segurança, carrinho, painel admin, site do filmmaker (projeto 2), relatórios e roteiro comercial (entregáveis separados).
