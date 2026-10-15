@@ -8,14 +8,13 @@ export function renderGrid(container, products, onOpen) {
   }
   for (const p of products) {
     const b = document.createElement('button');
-    b.type = 'button'; b.className = 'card';
+    b.type = 'button'; b.className = 'card spotlight';
     const img = document.createElement('img');
     img.src = p.fotos[0]; img.alt = p.nome; img.loading = 'lazy';
     img.onerror = () => { img.onerror = null; img.src = PLACEHOLDER; };
     const name = document.createElement('span'); name.className = 'card-name'; name.textContent = p.nome;
     const price = document.createElement('span'); price.className = 'card-price'; price.textContent = priceLabel(p.preco);
     b.append(img, name, price);
-    if (p.featured) { const tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = 'Destaque'; b.append(tag); }
     b.addEventListener('click', () => onOpen(p));
     container.append(b);
   }

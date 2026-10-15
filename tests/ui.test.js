@@ -41,12 +41,3 @@ it('shows "Consulte o preço" when price is null', () => {
   renderGrid(c, [{ ...p, preco: null }], () => {});
   expect(c.querySelector('.card-price').textContent).toBe('Consulte o preço');
 });
-
-it('renders the Destaque tag only for featured products', () => {
-  const c = document.createElement('div');
-  renderGrid(c, [{ ...p, featured: true }, { ...p, id: '2', featured: false }], () => {});
-  const cards = c.querySelectorAll('.card');
-  expect(cards[0].querySelector('.tag').textContent).toBe('Destaque');
-  expect(cards[1].querySelector('.tag')).toBeNull();
-  expect(cards[0].querySelector('img').alt).toBe('Boné <b>');
-});

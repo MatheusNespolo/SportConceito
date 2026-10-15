@@ -5,10 +5,9 @@ const CACHE_KEY = 'sc:products:v1';
 const CATEGORIES = { camisetas: 'camisetas', camiseta: 'camisetas', bermudas: 'bermudas', bermuda: 'bermudas',
   'bonés': 'bonés', bones: 'bonés', 'boné': 'bonés', bone: 'bonés', 'tênis': 'tênis', tenis: 'tênis' };
 const TRUTHY = new Set(['true', 'sim', 's', '1', 'x']);
-const isTruthy = v => TRUTHY.has(String(v ?? '').trim().toLowerCase());
 
 export function normalizeRow(r) {
-  if (!isTruthy(r.disponivel)) return null;
+  if (!TRUTHY.has(String(r.disponivel ?? '').trim().toLowerCase())) return null;
   const nome = (r.nome ?? '').trim();
   const categoria = CATEGORIES[(r.categoria ?? '').trim().toLowerCase()];
   const precoRaw = String(r.preco ?? '').trim();
@@ -20,7 +19,7 @@ export function normalizeRow(r) {
   }
   return { id: (r.id ?? '').trim() || nome, nome, categoria, preco,
     tamanhos: (r.tamanhos ?? '').split(',').map(t => t.trim()).filter(Boolean),
-    fotos, linkInstagram: safeUrl(r.link_instagram), featured: isTruthy(r.destaque) };
+    fotos, linkInstagram: safeUrl(r.link_instagram) };
 }
 
 function safe(fn) { try { return fn(); } catch { return null; } }
@@ -32,8 +31,7 @@ export async function loadProducts({ url, fetchFn = fetch, storage = globalThis.
     const rows = parseCSV(await res.text());
     if (!rows.length) throw new Error('CSV vazio');
     if (!('nome' in rows[0]) || !('disponivel' in rows[0])) throw new Error('CSV sem colunas esperadas');
-    const normalized = rows.map(normalizeRow).filter(Boolean);
-    const products = [...normalized.filter(p => p.featured), ...normalized.filter(p => !p.featured)];
+    const products = rows.map(normalizeRow).filter(Boolean);
     safe(() => storage.setItem(CACHE_KEY, JSON.stringify(products)));
     return { products, source: 'network' };
   } catch {
