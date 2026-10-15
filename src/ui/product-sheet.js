@@ -6,7 +6,7 @@ export function openProductSheet(product, { phone, instagram }) {
   const d = el('dialog', 'sheet'); d.setAttribute('aria-label', product.nome);
   const closeBtn = el('button', 'sheet-close icon-glow', '×'); closeBtn.type = 'button'; closeBtn.setAttribute('aria-label', 'Fechar');
   const gallery = el('div', 'sheet-gallery');
-  for (const src of product.fotos) { const i = el('img'); i.src = src; i.alt = product.nome;
+  for (const src of (product.fotos.length ? product.fotos : ['./placeholder.svg'])) { const i = el('img'); i.src = src; i.alt = product.nome;
     i.onerror = () => { i.onerror = null; i.src = './placeholder.svg'; }; gallery.append(i); }
   const wa = el('a', 'wa glow-btn', 'Comprar pelo WhatsApp'); wa.target = '_blank'; wa.rel = 'noopener';
   const ig = el('a', 'ig', 'Ver no Instagram'); ig.target = '_blank'; ig.rel = 'noopener';

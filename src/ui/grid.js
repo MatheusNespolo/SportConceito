@@ -10,7 +10,7 @@ export function renderGrid(container, products, onOpen) {
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'card spotlight';
     const img = document.createElement('img');
-    img.src = p.fotos[0]; img.alt = p.nome; img.loading = 'lazy';
+    img.src = p.fotos[0] || PLACEHOLDER; img.alt = p.nome; img.loading = 'lazy';
     img.onerror = () => { img.onerror = null; img.src = PLACEHOLDER; };
     const name = document.createElement('span'); name.className = 'card-name'; name.textContent = p.nome;
     const price = document.createElement('span'); price.className = 'card-price'; price.textContent = priceLabel(p.preco);

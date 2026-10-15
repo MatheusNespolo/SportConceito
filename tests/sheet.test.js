@@ -23,3 +23,9 @@ it('close removes dialog', () => {
   const close = openProductSheet({ ...base, tamanhos: [] }, opts); close();
   expect(document.querySelector('dialog.sheet')).toBeNull();
 });
+it('shows the placeholder in the sheet when there are no photos', () => {
+  document.body.innerHTML = '';
+  openProductSheet({ ...base, tamanhos: [], fotos: [] }, opts);
+  const imgs = document.querySelectorAll('dialog.sheet .sheet-gallery img');
+  expect(imgs).toHaveLength(1); expect(imgs[0].getAttribute('src')).toBe('./placeholder.svg');
+});

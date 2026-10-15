@@ -16,7 +16,7 @@ id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel
 | categoria | `camisetas`, `bermudas`, `bonés` ou `tênis` |
 | preco | Preço, ex.: `89,90`. Opcional: deixe em branco para mostrar "Consulte o preço" |
 | tamanhos | Ex.: `P, M, G` ou `38, 39, 40` |
-| foto_url | Link da foto principal |
+| foto_url | Link da foto principal. Opcional: sem foto, aparece a imagem padrão até você preencher |
 | foto2_url | Link da segunda foto (opcional) |
 | link_instagram | Link do post no Instagram (opcional) |
 | disponivel | Marcado = à venda; desmarcado = esgotado |

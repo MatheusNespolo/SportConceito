@@ -12,7 +12,7 @@ describe('normalizeRow', () => {
   it('maps unaccented categories', () => expect(normalizeRow(row({ categoria: 'BONES' })).categoria).toBe('bonés'));
   it.each(['FALSE', 'não', '', 'nao'])('rejects disponivel=%s', v => expect(normalizeRow(row({ disponivel: v }))).toBeNull());
   it.each(['TRUE', 'x', '1', ' S '])('accepts disponivel=%s', v => expect(normalizeRow(row({ disponivel: v }))).not.toBeNull());
-  it.each([{ nome: '' }, { categoria: 'meias' }, { preco: 'abc' }, { foto_url: '' }])('rejects invalid %o', o => {
+  it.each([{ nome: '' }, { categoria: 'meias' }, { preco: 'abc' }])('rejects invalid %o', o => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
     expect(normalizeRow(row(o))).toBeNull();
     expect(warn).toHaveBeenCalled(); warn.mockRestore();
@@ -80,5 +80,11 @@ describe('optional price', () => {
   it('accepts empty preco as null', () => {
     expect(normalizeRow(row({ preco: '' })).preco).toBeNull();
     expect(normalizeRow(row({ preco: '   ' })).preco).toBeNull();
+  });
+});
+
+describe('optional photo', () => {
+  it('accepts a row without photos (fotos = [])', () => {
+    expect(normalizeRow(row({ foto_url: '', foto2_url: '' })).fotos).toEqual([]);
   });
 });

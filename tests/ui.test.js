@@ -41,3 +41,8 @@ it('shows "Consulte o preço" when price is null', () => {
   renderGrid(c, [{ ...p, preco: null }], () => {});
   expect(c.querySelector('.card-price').textContent).toBe('Consulte o preço');
 });
+it('uses the placeholder image when a product has no photos', () => {
+  const c = document.createElement('div');
+  renderGrid(c, [{ ...p, fotos: [] }], () => {});
+  expect(c.querySelector('img').getAttribute('src')).toBe('./placeholder.svg');
+});

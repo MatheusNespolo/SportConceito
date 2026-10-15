@@ -13,7 +13,7 @@ export function normalizeRow(r) {
   const precoRaw = String(r.preco ?? '').trim();
   const preco = precoRaw ? parsePrice(precoRaw) : null;
   const fotos = [r.foto_url, r.foto2_url].map(f => (f ?? '').trim()).filter(Boolean);
-  if (!nome || !categoria || (precoRaw && preco === null) || !fotos.length) {
+  if (!nome || !categoria || (precoRaw && preco === null)) {
     console.warn('[catálogo] linha ignorada:', r);
     return null;
   }
