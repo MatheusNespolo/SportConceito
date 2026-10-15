@@ -7,3 +7,4 @@ export function parsePrice(raw) {
 }
 const fmt = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 export const formatPrice = n => fmt.format(n);
+export const priceLabel = n => (n === null ? 'Consulte o preço' : formatPrice(n));

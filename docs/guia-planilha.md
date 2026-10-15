@@ -14,7 +14,7 @@ id,nome,categoria,preco,tamanhos,foto_url,foto2_url,link_instagram,disponivel
 | id | Um código único por produto (ex.: `cam-001`) |
 | nome | Nome do produto |
 | categoria | `camisetas`, `bermudas`, `bonés` ou `tênis` |
-| preco | Preço, ex.: `89,90` |
+| preco | Preço, ex.: `89,90`. Opcional: deixe em branco para mostrar "Consulte o preço" |
 | tamanhos | Ex.: `P, M, G` ou `38, 39, 40` |
 | foto_url | Link da foto principal |
 | foto2_url | Link da segunda foto (opcional) |

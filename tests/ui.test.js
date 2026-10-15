@@ -36,3 +36,8 @@ it('filters do not steal focus when no chip had focus', () => {
   renderFilters(c, 'todos', () => {});
   expect(c.contains(document.activeElement)).toBe(false); c.remove();
 });
+it('shows "Consulte o preço" when price is null', () => {
+  const c = document.createElement('div');
+  renderGrid(c, [{ ...p, preco: null }], () => {});
+  expect(c.querySelector('.card-price').textContent).toBe('Consulte o preço');
+});

@@ -1,5 +1,5 @@
 import { buildWhatsAppLink } from '../domain/whatsapp.js';
-import { formatPrice } from '../domain/format.js';
+import { priceLabel } from '../domain/format.js';
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
 
 export function openProductSheet(product, { phone, instagram }) {
@@ -14,7 +14,7 @@ export function openProductSheet(product, { phone, instagram }) {
   let size;
   const updateWa = () => { wa.href = buildWhatsAppLink(phone, product, size); };
   const body = el('div', 'sheet-body');
-  body.append(el('h2', 'sheet-title', product.nome), el('p', 'sheet-price', formatPrice(product.preco)));
+  body.append(el('h2', 'sheet-title', product.nome), el('p', 'sheet-price', priceLabel(product.preco)));
   if (product.tamanhos.length) {
     const sizes = el('div', 'sizes'); sizes.setAttribute('role', 'group'); sizes.setAttribute('aria-label', 'Tamanho');
     for (const t of product.tamanhos) {

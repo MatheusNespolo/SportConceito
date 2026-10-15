@@ -1,4 +1,4 @@
-import { formatPrice } from '../domain/format.js';
+import { priceLabel } from '../domain/format.js';
 const PLACEHOLDER = './placeholder.svg';
 export function renderGrid(container, products, onOpen) {
   container.replaceChildren();
@@ -13,7 +13,7 @@ export function renderGrid(container, products, onOpen) {
     img.src = p.fotos[0]; img.alt = p.nome; img.loading = 'lazy';
     img.onerror = () => { img.onerror = null; img.src = PLACEHOLDER; };
     const name = document.createElement('span'); name.className = 'card-name'; name.textContent = p.nome;
-    const price = document.createElement('span'); price.className = 'card-price'; price.textContent = formatPrice(p.preco);
+    const price = document.createElement('span'); price.className = 'card-price'; price.textContent = priceLabel(p.preco);
     b.append(img, name, price);
     b.addEventListener('click', () => onOpen(p));
     container.append(b);

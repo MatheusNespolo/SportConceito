@@ -10,9 +10,10 @@ export function normalizeRow(r) {
   if (!TRUTHY.has(String(r.disponivel ?? '').trim().toLowerCase())) return null;
   const nome = (r.nome ?? '').trim();
   const categoria = CATEGORIES[(r.categoria ?? '').trim().toLowerCase()];
-  const preco = parsePrice(r.preco);
+  const precoRaw = String(r.preco ?? '').trim();
+  const preco = precoRaw ? parsePrice(precoRaw) : null;
   const fotos = [r.foto_url, r.foto2_url].map(f => (f ?? '').trim()).filter(Boolean);
-  if (!nome || !categoria || preco === null || !fotos.length) {
+  if (!nome || !categoria || (precoRaw && preco === null) || !fotos.length) {
     console.warn('[catálogo] linha ignorada:', r);
     return null;
   }

@@ -15,3 +15,7 @@ it('omits size line when none', () => {
   const text = decodeURIComponent(buildWhatsAppLink('1', p).split('text=')[1]);
   expect(text).not.toContain('Tamanho');
 });
+it('omits price when null', () => {
+  const text = decodeURIComponent(buildWhatsAppLink('1', { ...p, preco: null }).split('text=')[1]);
+  expect(text.split('\n')[0]).toBe('Olá! Tenho interesse no produto: Camiseta & Co');
+});

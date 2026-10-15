@@ -75,3 +75,10 @@ describe('link_instagram sanitising', () => {
     expect(normalizeRow(row({ link_instagram: ' HTTPS://instagram.com/p/x ' })).linkInstagram).toBe('HTTPS://instagram.com/p/x');
   });
 });
+
+describe('optional price', () => {
+  it('accepts empty preco as null', () => {
+    expect(normalizeRow(row({ preco: '' })).preco).toBeNull();
+    expect(normalizeRow(row({ preco: '   ' })).preco).toBeNull();
+  });
+});
