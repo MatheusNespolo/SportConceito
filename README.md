@@ -12,6 +12,11 @@ npm run build    # gera a pasta dist/
 
 Configuração em `src/config.js` (WhatsApp, Instagram, endereço, horário). A URL da planilha vem de `VITE_CSV_URL` (arquivo `.env`); sem ela, usa `public/sample.csv`.
 
+## Antes de publicar
+- [ ] Trocar o número de WhatsApp, endereço e horário em `src/config.js`.
+- [ ] Definir `VITE_CSV_URL` (link CSV da planilha publicada).
+- [ ] Rodar o Lighthouse (mobile) no Chrome DevTools e buscar >= 90 em Performance e Acessibilidade.
+
 ## Deploy no Cloudflare Pages
 1. Suba o repositório no GitHub.
 2. No Cloudflare: *Workers & Pages > Create > Pages > Connect to Git* e escolha o repositório.

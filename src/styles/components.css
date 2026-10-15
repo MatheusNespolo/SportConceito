@@ -55,3 +55,5 @@
   .sheet{inset:0 0 0 auto;width:min(480px,100vw);height:100dvh;max-height:none;border-radius:0;animation-name:sheet-in}
 }
 @media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+
+@media (max-width:480px){.logo{font-size:1rem}.site-header nav{gap:10px}.site-header{padding:12px}}

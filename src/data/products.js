@@ -18,7 +18,7 @@ export function normalizeRow(r) {
   }
   return { id: (r.id ?? '').trim() || nome, nome, categoria, preco,
     tamanhos: (r.tamanhos ?? '').split(',').map(t => t.trim()).filter(Boolean),
-    fotos, linkInstagram: (r.link_instagram ?? '').trim() };
+    fotos, linkInstagram: safeUrl(r.link_instagram) };
 }
 
 function safe(fn) { try { return fn(); } catch { return null; } }
@@ -39,3 +39,5 @@ export async function loadProducts({ url, fetchFn = fetch, storage = globalThis.
     return { products: [], source: 'none' };
   }
 }
+
+function safeUrl(v) { const t = (v ?? '').trim(); return /^https?:\/\//i.test(t) ? t : ''; }

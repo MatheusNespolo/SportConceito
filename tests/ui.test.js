@@ -21,3 +21,18 @@ it('filters mark active chip and emit change', () => {
   expect(c.querySelector('[aria-pressed="true"]').textContent).toBe('Todos');
   c.querySelectorAll('button')[4].click(); expect(onChange).toHaveBeenCalledWith('tênis');
 });
+it('filters restore focus to the active chip when a chip had focus', () => {
+  const c = document.createElement('div'); document.body.append(c);
+  let active = 'todos';
+  const draw = () => renderFilters(c, active, v => { active = v; draw(); });
+  draw();
+  c.querySelectorAll('button')[2].focus(); c.querySelectorAll('button')[2].click();
+  expect(document.activeElement.getAttribute('aria-pressed')).toBe('true');
+  expect(document.activeElement.textContent).toBe('Bermudas');
+  c.remove();
+});
+it('filters do not steal focus when no chip had focus', () => {
+  const c = document.createElement('div'); document.body.append(c);
+  renderFilters(c, 'todos', () => {});
+  expect(c.contains(document.activeElement)).toBe(false); c.remove();
+});

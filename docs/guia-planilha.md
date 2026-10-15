@@ -40,6 +40,7 @@ Cole esse endereço em `foto_url`.
 1. Na planilha: *Arquivo > Compartilhar > Publicar na Web*.
 2. Escolha a aba do catálogo e o formato **Valores separados por vírgula (.csv)**.
 3. Clique em *Publicar* e copie o link gerado.
+4. Envie esse link CSV publicado para o desenvolvedor, que liga o site à planilha.
 
 ## 4. Ligar o site à planilha
 Com o link CSV em mãos, o desenvolvedor coloca no arquivo `.env` na raiz do projeto:

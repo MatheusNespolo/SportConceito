@@ -67,3 +67,11 @@ describe('loadProducts header validation', () => {
     expect(r).toEqual({ products: [], source: 'network' });
   });
 });
+
+describe('link_instagram sanitising', () => {
+  it('drops javascript: links', () => expect(normalizeRow(row({ link_instagram: 'javascript:alert(1)' })).linkInstagram).toBe(''));
+  it('keeps http and https links', () => {
+    expect(normalizeRow(row({ link_instagram: 'http://instagram.com/p/x' })).linkInstagram).toBe('http://instagram.com/p/x');
+    expect(normalizeRow(row({ link_instagram: ' HTTPS://instagram.com/p/x ' })).linkInstagram).toBe('HTTPS://instagram.com/p/x');
+  });
+});
