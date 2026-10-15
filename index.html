@@ -5,41 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sport Conceito</title>
   <meta name="description" content="Sport Conceito: camisetas, bermudas, bonés e tênis. Veja as novidades da semana e peça pelo WhatsApp.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;600;700&display=swap">
 </head>
-<body>
+<body class="grain">
   <header class="site-header">
     <a class="logo" href="#top">Sport Conceito</a>
     <nav aria-label="Principal">
       <a href="#catalogo">Catálogo</a>
       <a href="#contato">Contato</a>
-      <a class="ig-link" data-ig href="#" target="_blank" rel="noopener" aria-label="Instagram da Sport Conceito">
+      <a class="icon-glow ig-link" data-ig href="#" target="_blank" rel="noopener" aria-label="Instagram da Sport Conceito">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
       </a>
     </nav>
   </header>
   <main id="top">
-    <section class="hero">
+    <section class="hero bg-grid">
+      <div class="hero-blob"></div>
       <div class="hero-inner">
-        <h1>Novidades da semana</h1>
+        <h1 class="text-glow">Novidades da semana</h1>
         <p>Streetwear e esporte com conceito. Escolha a peça e fale com a gente.</p>
-        <a class="btn" href="#catalogo">Ver catálogo</a>
+        <a class="glow-btn btn" href="#catalogo">Ver catálogo</a>
       </div>
     </section>
-    <div class="wave" aria-hidden="true"></div>
     <section id="catalogo" class="catalog">
       <div id="filters" class="filters" role="group" aria-label="Categorias"></div>
       <div id="grid" class="grid" aria-live="polite"></div>
     </section>
   </main>
-  <div class="wave wave-up" aria-hidden="true"></div>
   <footer id="contato" class="site-footer">
     <p class="logo">Sport Conceito</p>
     <p id="store-address"></p>
     <p id="store-hours"></p>
     <a data-ig href="#" target="_blank" rel="noopener">Instagram</a>
   </footer>
-  <a id="wa-float" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">WhatsApp</a>
+  <a id="wa-float" class="glow-btn" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">WhatsApp</a>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
